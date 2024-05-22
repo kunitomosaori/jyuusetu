@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重要事項説明書自動作成</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+    </header>
+
+    <div class="container">
+        <h1>契約書一覧</h1>
+        <div id="drop-area">
+            <p>ここにファイルをドラッグ＆ドロップしてください</p>
+            <input type="file" id="fileElem" multiple accept=".doc,.docx,.pdf,.txt">
+        </div>
+        <div id="contract-list">
+            <!-- 契約書データの一覧がここに表示されます -->
+        </div>
+    </div>
+
+    <div id="important-details-page" class="hidden">
+        <h1>重要事項説明書作成</h1>
+        <div class="content">
+            <div class="left">
+                <h2>契約書データ</h2>
+                <textarea id="contract-data" readonly></textarea>
+            </div>
+            <div class="right">
+                <h2>重要事項データ</h2>
+                <form id="important-details-form">
+                    <div class="table-container">
+                        <table border="1" style="border-collapse: collapse">
+                            <tr>
+                                <td colspan="4">建物賃貸借重要事項説明書</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">下記の賃貸借物件について、宅地建物取引業法第35条、第35条の2の規定に基づき次の通り説明します。</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">この内容は重要ですから、十分理解されるようお願いします。</td>
+                            </tr>
+                            <tr>
+                                <td>免許番号</td>
+                                <td>東京都知事（12）第〇〇号</td>
+                                <td rowspan="2">説明する宅地建物取引士</td>
+                                <td rowspan="2"><input name="説明する宅地建物取引士" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>免許年月日</td>
+                                <td><input name="免許年月日" type="text" placeholder="令和4年4月1日" /></td>
+                            </tr>
+                            <tr>
+                                <td>商号又は名称</td>
+                                <td>株式会社〇〇</td>
+                                <td>業務に従事する事務所</td>
+                                <td>東京都千代田区〇〇一丁目〇番〇号</td>
+                            </tr>
+                            <tr>
+                                <td>主たる事務所</td>
+                                <td>東京都千代田区〇〇一丁目〇番〇号</td>
+                                <td>営業担当</td>
+                                <td><input name="営業担当" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>代表者氏名</td>
+                                <td><input name="代表者氏名" type="text" /></td>
+                                <td>取引態様（法第34条）</td>
+                                <td>賃貸借媒介</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">加入している保証協会</td>
+                                <td colspan="2">公益社団法人全国宅地建物取引業保証協会</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">所在地</td>
+                                <td colspan="2">東京都千代田区岩本町二丁目6番3号</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">所属地方本部所在地</td>
+                                <td colspan="2">東京都千代田区富士見二丁目2番4号</td>
+                            </tr>
+                            <tr>
+                                <td>弁済業務保証金の供託所</td>
+                                <td>東京法務局</td>
+                                <td>所在地</td>
+                                <td>東京都千代田区九段南一丁目1番15号</td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１.物件の表示</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">建物名称</td>
+                                <td colspan="2"><input name="建物名称" type="text" /></td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2">所在地（住居表示）</td>
+                                <td colspan="2"><input name="所在地（住居表示）" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>構造・規模</td>
+                                <td><input name="構造・規模" type="text" /></td>
+                                <td>竣工年月</td>
+                                <td><input name="竣工年月" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>階数</td>
+                                <td colspan="2"><input name="階数" type="text" /></td>
+                                <td>階</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2"><input name="" type="text" /></td>
+                                <td>号室</td>
+                            </tr>
+                            <tr>
+                                <td>契約面積</td>
+                                <td colspan="2"><input name="契約面積" type="text" /></td>
+                                <td>坪</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input name="" type="text" /></td>
+                                <td>㎡</td>
+                                <td>トイレ・流し台等を含む</td>
+                            </tr>
+                            <tr>
+                                <td>用途</td>
+                                <td colspan="3"><input name="用途" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>利用制限</td>
+                                <td colspan="3"><input name="利用制限" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>交通（最寄駅）</td>
+                                <td colspan="2"><input name="交通（最寄駅）" type="text" /></td>
+                                <td>線</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2"><input name="" type="text" /></td>
+                                <td>駅</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>徒歩</td>
+                                <td><input name="徒歩" type="text" /></td>
+                                <td>分</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">２.貸主の住所・氏名</td>
+                            </tr>
+                            <tr>
+                                <td>住所</td>
+                                <td colspan="3"><input name="住所" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>氏名</td>
+                                <td colspan="3"><input name="氏名" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>登記簿上の所有者</td>
+                                <td colspan="3">貸主と同じ</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">３.登記簿に記載された事項</td>
+                            </tr>
+                            <tr>
+                                <td>所有者の住所</td>
+                                <td colspan="3"><input name="所有者の住所" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>所有者氏名</td>
+                                <td colspan="3"><input name="所有者氏名" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>所有権に関する事項（甲区）</td>
+                                <td colspan="3"><input name="所有権に関する事項（甲区）" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>所有権以外の権利に関する事項（乙区）</td>
+                                <td colspan="3"><input name="所有権以外の権利に関する事項（乙区）" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">詳細については、別紙添付全部事項証明書参照</td>
+                            </tr>
+                            <tr>
+                                <td>抵当権（根抵当権）が設定されている場合：</td>
+                                <td colspan="3">本契約は該当いたします。</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">４.法令上の制限</td>
+                            </tr>
+                            <tr>
+                                <td>法令名</td>
+                                <td colspan="3">新住宅市街地開発法、新都市基盤整備法、流通業務市街地の整備に関する法律</td>
+                            </tr>
+                            <tr>
+                                <td>制限の概要</td>
+                                <td colspan="3">上記のいずれにも制限を受けない。</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">５.当該建物が造成宅地防災区域内か否か</td>
+                            </tr>
+                            <tr>
+                                <td>造成宅地防災区域内</td>
+                                <td colspan="3">造成宅地防災区域外</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">６.当該建物が土砂災害警戒区域内か否か</td>
+                            </tr>
+                            <tr>
+                                <td>土砂災害警戒区域内</td>
+                                <td colspan="3">土砂災害警戒区域外</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">７.当該建物が津波災害警戒区域内か否か</td>
+                            </tr>
+                            <tr>
+                                <td>未指定</td>
+                                <td colspan="3">（現時点において、本物件所在地について津波災害警戒区域の指定はなされておりませんが、将来当該区域として指定される場合があります。）</td>
+                            </tr>
+                            <tr>
+                                <td>津波災害警戒区域内</td>
+                                <td colspan="3">津波災害警戒区域外</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">８.水防法施行規則の規定により市町村の長が提供する図面（水害ハザードマップ）における当該建物の所在地</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">水害ハザードマップの有無</td>
+                            </tr>
+                            <tr>
+                                <td>洪水</td>
+                                <td>有 図面名称：</td>
+                                <td colspan="2"><input name="有 図面名称：" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>無 照会先：（</td>
+                                <td><input name="無 照会先：（" type="text" /></td>
+                                <td>）</td>
+                            </tr>
+                            <tr>
+                                <td>雨水出水（内水）</td>
+                                <td>有 図面名称：</td>
+                                <td colspan="2"><input name="有 図面名称：" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>無 照会先：（</td>
+                                <td><input name="無 照会先：（" type="text" /></td>
+                                <td>）</td>
+                            </tr>
+                            <tr>
+                                <td>高潮</td>
+                                <td>有 図面名称：</td>
+                                <td colspan="2"><input name="有 図面名称：" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>無 照会先：（</td>
+                                <td><input name="無 照会先：（" type="text" /></td>
+                                <td>）</td>
+                            </tr>
+                            <tr>
+                                <td>水害ハザードマップにおける建物の所在地</td>
+                                <td colspan="3">該当する図面（ハザードマップ）における当該建物の所在地については別添のとおりです。</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">なお、水害ハザードマップに記載されている内容については今後変更される場合があります。</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">９.建物の設備・施設の状況（　既存建物　・　未完成建物　）</td>
+                            </tr>
+                            <tr>
+                                <td>電気</td>
+                                <td>有り</td>
+                                <td colspan="2">個別メーター</td>
+                            </tr>
+                            <tr>
+                                <td>流し台</td>
+                                <td>有り</td>
+                                <td colspan="2">共用部分</td>
+                            </tr>
+                            <tr>
+                                <td>水道</td>
+                                <td>有り</td>
+                                <td colspan="2">共益費に含む</td>
+                            </tr>
+                            <tr>
+                                <td>トイレ</td>
+                                <td>有り</td>
+                                <td>男女別</td>
+                                <td>室外</td>
+                            </tr>
+                            <tr>
+                                <td>ガス</td>
+                                <td colspan="3">無し</td>
+                            </tr>
+                            <tr>
+                                <td>空調</td>
+                                <td>有り</td>
+                                <td colspan="2">セントラル空調</td>
+                            </tr>
+                            <tr>
+                                <td>運転時間：</td>
+                                <td colspan="3">平日：12:00～12:00　　土曜日：12:00～12:00　　日・祭日：12:00～12:00</td>
+                            </tr>
+                            <tr>
+                                <td>電話</td>
+                                <td colspan="3">設置可</td>
+                            </tr>
+                            <tr>
+                                <td>床仕上げ</td>
+                                <td colspan="3">ＯＡフロア/タイルカーペット</td>
+                            </tr>
+                            <tr>
+                                <td>警備</td>
+                                <td>有り</td>
+                                <td colspan="2">有人警備・機械警備併用</td>
+                            </tr>
+                            <tr>
+                                <td>貸室内の機械警備</td>
+                                <td colspan="3">有り</td>
+                            </tr>
+                            <tr>
+                                <td>エレベーター</td>
+                                <td>有り</td>
+                                <td>4</td>
+                                <td>基</td>
+                            </tr>
+                            <tr>
+                                <td>ビル使用可能時間</td>
+                                <td colspan="2"><input name="ビル使用可能時間" type="text" /></td>
+                                <td>※　法定点検等により、使用できない日があります。</td>
+                            </tr>
+                            <tr>
+                                <td>エントランス開閉時間</td>
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td>平日：</td>
+                                <td><input name="平日：" type="text" /></td>
+                                <td>～</td>
+                                <td><input name="～" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>土曜日：</td>
+                                <td><input name="土曜日：" type="text" /></td>
+                                <td>～</td>
+                                <td><input name="～" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>日・祭日：</td>
+                                <td><input name="日・祭日：" type="text" /></td>
+                                <td>～</td>
+                                <td><input name="～" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">※時間外はセキュリティカードや鍵・テンキー等により24時間入退館可能。</td>
+                            </tr>
+                            <tr>
+                                <td>駐車場</td>
+                                <td colspan="2">有り</td>
+                                <td>(別途契約)</td>
+                            </tr>
+                            <tr>
+                                <td>使用時間：</td>
+                                <td><input name="使用時間：" type="text" /></td>
+                                <td>～</td>
+                                <td><input name="～" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１０.アスベスト（石綿）使用調査に関する事項</td>
+                            </tr>
+                            <tr>
+                                <td>石綿調査結果の記録の有無</td>
+                                <td colspan="3">&gt;無し</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１１.耐震診断に関する事項</td>
+                            </tr>
+                            <tr>
+                                <td>耐震診断の内容</td>
+                                <td colspan="3">建物登記簿により1983年6月1日以降に竣工しているため耐震診断説明は省略します。</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１２.契約期間及び更新に関する事項</td>
+                            </tr>
+                            <tr>
+                                <td>賃貸借の種類</td>
+                                <td colspan="3">借地借家法による普通建物賃貸借</td>
+                            </tr>
+                            <tr>
+                                <td>賃貸借の期間</td>
+                                <td><input name="賃貸借の期間" type="text" /></td>
+                                <td>～</td>
+                                <td><input name="～" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2"><input name="" type="text" /></td>
+                                <td>年間</td>
+                            </tr>
+                            <tr>
+                                <td>更新事項</td>
+                                <td colspan="3">賃貸借契約書（案）　第●条・第●条　参照</td>
+                            </tr>
+                            <tr>
+                                <td>本契約日</td>
+                                <td colspan="2"><input name="本契約日" type="text" /></td>
+                                <td>予定</td>
+                            </tr>
+                            <tr>
+                                <td>物件引渡日</td>
+                                <td colspan="2"><input name="物件引渡日" type="text" /></td>
+                                <td>予定</td>
+                            </tr>
+                            <tr>
+                                <td>賃料起算日</td>
+                                <td colspan="3"><input name="賃料起算日" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>共益費（管理費）起算日</td>
+                                <td colspan="3"><input name="共益費（管理費）起算日" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>敷金（保証金）預託日</td>
+                                <td colspan="2"><input name="敷金（保証金）預託日" type="text" /></td>
+                                <td>迄に預託</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１３.契約内容の諸条件と費用</td>
+                            </tr>
+                            <tr>
+                                <td>敷金（保証金）</td>
+                                <td><input name="敷金（保証金）" type="text" /></td>
+                                <td>円</td>
+                                <td>（非課税）</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>賃料の</td>
+                                <td><input name="賃料の" type="text" /></td>
+                                <td>ヶ月分</td>
+                            </tr>
+                            <tr>
+                                <td>賃料</td>
+                                <td colspan="3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>月額</td>
+                                <td><input name="月額" type="text" /></td>
+                                <td>円</td>
+                                <td>（別途消費税）</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2"><input name="" type="text" /></td>
+                                <td>円　/　坪</td>
+                            </tr>
+                            <tr>
+                                <td>共益費（管理費）</td>
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td>月額</td>
+                                <td><input name="月額" type="text" /></td>
+                                <td>円</td>
+                                <td>（別途消費税）</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2"><input name="" type="text" /></td>
+                                <td>円　/　坪</td>
+                            </tr>
+                            <tr>
+                                <td>礼金</td>
+                                <td colspan="3">有り</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input name="" type="text" /></td>
+                                <td>円</td>
+                                <td>（別途消費税）</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>賃料の</td>
+                                <td><input name="賃料の" type="text" /></td>
+                                <td>ヶ月分</td>
+                            </tr>
+                            <tr>
+                                <td>更新料</td>
+                                <td>有り</td>
+                                <td>新賃料の1ヶ月分</td>
+                                <td>（別途消費税）</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">償却費</td>
+                                <td>有り</td>
+                                <td>解約時賃料の●ヶ月分</td>
+                                <td>（別途消費税）</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">※原状回復費用は別途賃借人負担</td>
+                            </tr>
+                            <tr>
+                                <td>その他費用</td>
+                                <td colspan="3">賃貸借契約書（案）　第●条・第●条　及び　館内規則　参照</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１４.契約の解除・解約に関する事項</td>
+                            </tr>
+                            <tr>
+                                <td>1.</td>
+                                <td>賃借人の解約申し入れにより、</td>
+                                <td><input name="賃借人の解約申し入れにより、" type="text" /></td>
+                                <td>ヶ月後</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>または</td>
+                                <td colspan="2">6ヶ月分の賃料及び共益費(管理費)相当額を賃貸人に支払い即時解約可能。</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="3">解約通知は賃借人が賃貸人に対して直接書面にて通知するものとする。</td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td colspan="3">賃貸借契約書（案）　第●条・第●条　参照</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１５.損害賠償額の予定または違約金に関する事項</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">賃貸借契約書（案）　第●条・第●条　参照</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１６.敷金（保証金）およびその他の一時金の精算に関する事項</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">賃貸借契約書（案）　第●条・第●条　参照</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１７.支払金または預り金の保全措置に関する事項</td>
+                            </tr>
+                            <tr>
+                                <td>保全措置をこうずるかどうか</td>
+                                <td colspan="3">講じない</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１８.金銭の貸借に関する事項</td>
+                            </tr>
+                            <tr>
+                                <td>金銭貸借のあっせんの有無</td>
+                                <td colspan="3">無し</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">１９.建物状況調査の結果の概要（既存の住宅のとき）</td>
+                            </tr>
+                            <tr>
+                                <td>建物状況調査実施の有無</td>
+                                <td colspan="3"><input name="建物状況調査実施の有無" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>照会先</td>
+                                <td colspan="3">①所有者　　②管理会社　　③管理組合（区分所有建物の場合）</td>
+                            </tr>
+                            <tr>
+                                <td>備考</td>
+                                <td colspan="3"><input name="備考" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">２０.その他に関する事項</td>
+                            </tr>
+                            <tr>
+                                <td>内装工事等について</td>
+                                <td colspan="3">賃貸借契約書（案）　第●条・第●条　及び　館内規則　参照</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">※音や匂いを伴う工事については工事日に制限がある場合があります</td>
+                            </tr>
+                            <tr>
+                                <td>原状回復について</td>
+                                <td colspan="3">賃貸借契約書（案）　第●条・第●条　及び　原状回復要項・館内規則　参照</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4">連帯保証人</td>
+                                <td colspan="3">必要</td>
+                            </tr>
+                            <tr>
+                                <td>氏名</td>
+                                <td colspan="2"><input name="氏名" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>極度額</td>
+                                <td><input name="極度額" type="text" /></td>
+                                <td>円</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">賃貸借契約書（案）　第●条　参照</td>
+                            </tr>
+                            <tr>
+                                <td>特約事項</td>
+                                <td colspan="3">賃貸借契約書（案）　第●条　参照</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">２１.管理の委託先</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">管理会社</td>
+                                <td>社　名</td>
+                                <td colspan="2"><input name="社　名" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>電話</td>
+                                <td colspan="2"><input name="電話" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>住　所</td>
+                                <td colspan="2"><input name="住　所" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">２２.仲介手数料（業法４６条による）</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">報酬額</td>
+                                <td colspan="2"><input name="報酬額" type="text" /></td>
+                                <td>円</td>
+                            </tr>
+                            <tr>
+                                <td>消費税</td>
+                                <td><input name="消費税" type="text" /></td>
+                                <td>円</td>
+                            </tr>
+                            <tr>
+                                <td>合計金額</td>
+                                <td colspan="2"><input name="合計金額" type="text" /></td>
+                                <td>円</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">２３.添付資料</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td colspan="3">賃貸借契約書案文</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td colspan="3">全部事項証明書（建物）</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td colspan="3">賃貸借室図面（間取図）</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td colspan="3">館内規則</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td colspan="3">アスベスト(石綿)使用調査報告書</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td colspan="3">耐震診断報告書</td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <td>年</td>
+                                <td>月</td>
+                                <td>日</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">宅地建物取引士より取引士証を提示され\n重要事項説明書及び添付資料の交付を受け\n重要事項について説明を受けました。</td>
+                            </tr>
+                            <tr>
+                                <td>住所</td>
+                                <td colspan="3"><input name="住所" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>商号</td>
+                                <td colspan="2"><input name="商号" type="text" /></td>
+                                <td>印</td>
+                            </tr>
+                            <tr>
+                                <td>担当者</td>
+                                <td colspan="3"><input name="担当者" type="text" /></td>
+                            </tr>
+                        </table>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="button-wrapping">
+        <button type="button" id="save-excel-btn" class="btn btn--yellow">エクセルとして保存</button>
+        <button type="button" id="save-pdf-btn" class="btn btn--yellow">PDFとして保存</button>
+    </div>
+    <div class="button-wrapping">
+        <button id="back-btn" class="btn">戻る</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzip/3.0.7/pizzip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.23.1/docxtemplater.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script><!-- エクセルライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><!-- PDFライブラリ -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>
